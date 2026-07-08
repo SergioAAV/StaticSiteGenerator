@@ -76,10 +76,10 @@ def markdown_to_html_node(markdown):
             case BlockType.QUOTE:
                 lines = block.split("\n")
                 for i in range(len(lines)):
-                    if not line[i].startswith(">"):
+                    if not lines[i].startswith(">"):
                         raise ValueError("invalid quote block")
                     lines[i] = lines[i][1:].strip()
-                text = " ".join(lines)
+                text = " ".join(lines).strip()
                 children = text_to_children(text)
                 final_children.append(ParentNode("blockquote", children))
             case BlockType.UNORDERED_LIST:
