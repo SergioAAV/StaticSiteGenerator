@@ -67,12 +67,12 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
             new_nodes.append(old_node)
             continue
         for link in extracted_links:
-            sections = source_text.split(f"![{link[0]}]({link[1]})", 1)
+            sections = source_text.split(f"[{link[0]}]({link[1]})", 1)
             if len(sections) != 2:
                 raise ValueError("invalid markdown, link section not closed")
             if sections[0] != "":
                 new_nodes.append(TextNode(sections[0], TextType.TEXT))
-            new_nodes.append(TextNode(link[0], TextType.IMAGE, link[1],))
+            new_nodes.append(TextNode(link[0], TextType.LINK, link[1],))
             source_text = sections[1]
         if source_text != "":
             new_nodes.append(TextNode(source_text, TextType.TEXT))
