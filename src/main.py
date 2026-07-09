@@ -12,8 +12,9 @@ template_path = "./template.html"
 
 
 def main() -> None:
-    if len(sys.argv) > 0:
-        basepath = sys.argv[0]
+    print(f"SYS = {sys.argv}")
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
     else:
         basepath = "/"
     print("Cleaning public directory...")
